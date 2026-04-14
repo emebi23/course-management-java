@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400" prefWidth="600" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #e0f7fa, #fce4ec);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Dashboardcontroller">
+
+    <children>
+        <Label layoutX="200" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Dashboard Overview" />
+
+        <GridPane alignment="CENTER" hgap="20" vgap="20" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+
+            <rowConstraints>
+                <RowConstraints percentHeight="33" />
+                <RowConstraints percentHeight="33" />
+                <RowConstraints percentHeight="33" />
+            </rowConstraints>
+
+            <!-- Student Count -->
+            <VBox style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 12; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                <Label style="-fx-font-size: 14px;" text="Total Students:" />
+                <Label fx:id="studentCountLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+            </VBox>
+
+            <!-- Instructor Count -->
+            <VBox style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 12; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);" GridPane.columnIndex="1">
+                <Label style="-fx-font-size: 14px;" text="Total Instructors:" />
+                <Label fx:id="instructorCountLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+            </VBox>
+
+            <!-- Course Count -->
+            <VBox style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 12; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);" GridPane.rowIndex="1">
+                <Label style="-fx-font-size: 14px;" text="Total Courses:" />
+                <Label fx:id="courseCountLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+            </VBox>
+
+            <!-- User Count -->
+            <VBox style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 12; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label style="-fx-font-size: 14px;" text="Total Users:" />
+                <Label fx:id="userCountLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+            </VBox>
+
+            <!-- Enrollment Count -->
+            <VBox alignment="CENTER" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #84fab0, #8fd3f4); -fx-background-radius: 12; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;" text="Total Enrollments:" />
+                <Label fx:id="enrollmentCountLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="0" />
+            </VBox>
+        </GridPane>
+         <Button layoutY="14.0" onAction="#goHome" style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16;" text="Back to Homepage" AnchorPane.bottomAnchor="352.4" AnchorPane.leftAnchor="0.0" />
+        
+    </children>
+</AnchorPane>

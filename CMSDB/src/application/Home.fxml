@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="462.0" prefWidth="573.0" style="-fx-background-color: linear-gradient(to right, #e0eafc, #cfdef3);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Homecontroller">
+   <children>
+      
+      <MenuBar layoutX="4.0" layoutY="14.0" prefHeight="39.0" prefWidth="147.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="dashboardMenuItem" mnemonicParsing="false" onAction="#goDashboard" text="Dashboard" />
+                  <MenuItem fx:id="homeMenuItem" mnemonicParsing="false" onAction="#goHome" text="Home" />
+                  <MenuItem fx:id="studentMenuItem" mnemonicParsing="false" onAction="#goStudent" text="Student" />
+                  <MenuItem fx:id="instructorMenuItem" mnemonicParsing="false" onAction="#goInstructor" text="Instructor" />
+                  <MenuItem fx:id="courseMenuItem" mnemonicParsing="false" onAction="#goCourse" text="Course" />
+                  <MenuItem fx:id="enrollmentMenuItem" mnemonicParsing="false" onAction="#goEnrollment" text="Enrollment" />
+                  <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false" onAction="#goLogout" text="Logout" />
+                  <MenuItem fx:id="userMenuItem" mnemonicParsing="false" onAction="#goUser" text="User" />
+                 
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="406.0" fitWidth="460.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="167.0" layoutY="3.0" prefHeight="61.0" prefWidth="460.0" text="Wellcome To   Course Management System">
+         <font>
+            <Font name="Elephant" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9789473414421082" green="0.9789473414421082" blue="0.9789473414421082" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="418.0" fitWidth="627.0" layoutX="-1.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@lms-scaled-1-1024x683.jpeg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
