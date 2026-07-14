@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #f0f2f5;"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="application.Coursecontroller">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="0"
+              style="-fx-background-color: linear-gradient(to right, #1a1a2e, #0f3460);
+                     -fx-padding: 0 20 0 0;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);">
+            <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #e96c50; -fx-padding: 16 24;">
+                <Label text="📚" style="-fx-font-size: 20px;" />
+                <Label text="Course Management" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="🏠 Back to Home" onAction="#goHome"
+                style="-fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: white;
+                       -fx-background-radius: 6; -fx-font-size: 13px; -fx-padding: 8 16;
+                       -fx-cursor: hand; -fx-border-color: transparent;" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="14" style="-fx-padding: 18;">
+
+            <!-- Form Card -->
+            <VBox spacing="12" style="-fx-background-color:white;-fx-background-radius:12;
+                         -fx-padding:18;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,3);">
+                <Label text="Course Information" style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#1a1a2e;" />
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Course ID" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <TextField fx:id="courseIdField" prefWidth="130"
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 10;-fx-font-size:13px;" />
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Course Name" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <TextField fx:id="courseNameField" prefWidth="230"
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 10;-fx-font-size:13px;" />
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Credit Hours" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <TextField fx:id="creditHourField" prefWidth="95"
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 10;-fx-font-size:13px;" />
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Instructor" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <ComboBox fx:id="instructorCombo" prefWidth="280"
+                            promptText="Select instructor..."
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-font-size:13px;" />
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Toolbar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="🔍  Search by Course ID or Name..." prefWidth="300"
+                    style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 12;-fx-font-size:13px;" />
+                <Button text="Search" onAction="#handleSearch"
+                    style="-fx-background-color:#2980b9;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="➕ Add"    onAction="#handleAdd"    style="-fx-background-color:#27ae60;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+                <Button text="✏ Update" onAction="#handleUpdate" style="-fx-background-color:#f39c12;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+                <Button text="🗑 Delete" onAction="#handleDelete" style="-fx-background-color:#e74c3c;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+            </HBox>
+
+            <!-- Table -->
+            <TableView fx:id="courseTable" prefHeight="420"
+                style="-fx-background-color:white;-fx-background-radius:10;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);">
+                <columns>
+                    <TableColumn fx:id="colCourseId"       text="Course ID"       prefWidth="110" />
+                    <TableColumn fx:id="colCourseName"     text="Course Name"     prefWidth="210" />
+                    <TableColumn fx:id="colCreditHour"     text="Credit Hours"    prefWidth="100" />
+                    <TableColumn fx:id="colInstructorId"   text="Instructor ID"   prefWidth="120" />
+                    <TableColumn fx:id="colInstructorName" text="Instructor Name" prefWidth="185" />
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

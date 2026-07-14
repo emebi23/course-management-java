@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #f0f2f5;"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="application.Enrollmentcontroller">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="0"
+              style="-fx-background-color: linear-gradient(to right, #1a1a2e, #0f3460);
+                     -fx-padding: 0 20 0 0;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);">
+            <HBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #e96c50; -fx-padding: 16 24;">
+                <Label text="📝" style="-fx-font-size: 20px;" />
+                <Label text="Enrollment Management"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="🏠 Back to Home" onAction="#goHome"
+                    style="-fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: white;
+                           -fx-background-radius: 6; -fx-font-size: 13px;
+                           -fx-padding: 8 16; -fx-cursor: hand; -fx-border-color: transparent;" />
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="16" style="-fx-padding: 20;">
+
+            <!-- ══ LEFT PANEL ══ -->
+            <VBox spacing="12" style="-fx-min-width: 410; -fx-max-width: 410;">
+
+                <!-- Step 1: Course -->
+                <VBox spacing="8"
+                    style="-fx-background-color: white; -fx-background-radius: 12;
+                           -fx-padding: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 3);">
+                    <Label text="Step 1 — Select Course"
+                        style="-fx-font-weight: bold; -fx-text-fill: #1a1a2e; -fx-font-size: 13px;" />
+                    <ComboBox fx:id="courseCombo" prefWidth="378"
+                        promptText="Select course..."
+                        style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                               -fx-border-radius: 8; -fx-background-radius: 8;
+                               -fx-border-width: 1; -fx-font-size: 13px;" />
+                </VBox>
+
+                <!-- Step 2: Semester -->
+                <VBox spacing="8"
+                    style="-fx-background-color: white; -fx-background-radius: 12;
+                           -fx-padding: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 3);">
+                    <Label text="Step 2 — Semester &amp; Academic Year"
+                        style="-fx-font-weight: bold; -fx-text-fill: #1a1a2e; -fx-font-size: 13px;" />
+                    <HBox spacing="12">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Semester" style="-fx-font-size: 12px; -fx-text-fill: #555;" />
+                            <TextField fx:id="semesterField" prefWidth="185"
+                                promptText="e.g. Semester 1"
+                                style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                                       -fx-border-radius: 8; -fx-background-radius: 8;
+                                       -fx-border-width: 1; -fx-padding: 8 12; -fx-font-size: 13px;" />
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Academic Year" style="-fx-font-size: 12px; -fx-text-fill: #555;" />
+                            <TextField fx:id="academicYearField" prefWidth="170"
+                                promptText="e.g. 2025/2026"
+                                style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                                       -fx-border-radius: 8; -fx-background-radius: 8;
+                                       -fx-border-width: 1; -fx-padding: 8 12; -fx-font-size: 13px;" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Step 3: Filter + Student List -->
+                <VBox spacing="8"
+                    style="-fx-background-color: white; -fx-background-radius: 12;
+                           -fx-padding: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 3);">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Step 3 — Filter &amp; Select Students"
+                            style="-fx-font-weight: bold; -fx-text-fill: #1a1a2e; -fx-font-size: 13px;" />
+                        <Label fx:id="selectedCountLabel" text="0 selected"
+                            style="-fx-text-fill: #7f8c8d; -fx-font-size: 11px;
+                                   -fx-background-color: #f0f2f5; -fx-padding: 2 8;
+                                   -fx-background-radius: 10;" />
+                    </HBox>
+
+                    <HBox spacing="10">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Department" style="-fx-font-size: 12px; -fx-text-fill: #555;" />
+                            <ComboBox fx:id="filterDeptCombo" prefWidth="200"
+                                promptText="All departments"
+                                style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                                       -fx-border-radius: 8; -fx-background-radius: 8;
+                                       -fx-border-width: 1; -fx-font-size: 13px;" />
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Year Level" style="-fx-font-size: 12px; -fx-text-fill: #555;" />
+                            <ComboBox fx:id="filterYearCombo" prefWidth="100"
+                                promptText="Any"
+                                style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                                       -fx-border-radius: 8; -fx-background-radius: 8;
+                                       -fx-border-width: 1; -fx-font-size: 13px;" />
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <TextField fx:id="searchField" prefWidth="300"
+                            promptText="🔍  Search by name or student ID..."
+                            style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                                   -fx-border-radius: 8; -fx-background-radius: 8;
+                                   -fx-border-width: 1; -fx-padding: 8 12; -fx-font-size: 13px;" />
+                        <Button text="Filter" onAction="#handleSearch"
+                            style="-fx-background-color: #2980b9; -fx-text-fill: white;
+                                   -fx-background-radius: 8; -fx-font-size: 13px;
+                                   -fx-padding: 8 16; -fx-cursor: hand; -fx-border-color: transparent;" />
+                    </HBox>
+
+                    <ListView fx:id="studentListView" prefHeight="220"
+                        style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                               -fx-border-radius: 8; -fx-background-radius: 8;" />
+
+                    <HBox spacing="8">
+                        <Button text="☑ Select All" onAction="#handleSelectAll"
+                            style="-fx-background-color: #2980b9; -fx-text-fill: white;
+                                   -fx-background-radius: 8; -fx-font-size: 12px;
+                                   -fx-padding: 8 14; -fx-cursor: hand; -fx-border-color: transparent;" />
+                        <Button text="☐ Clear All" onAction="#handleClearSelection"
+                            style="-fx-background-color: #7f8c8d; -fx-text-fill: white;
+                                   -fx-background-radius: 8; -fx-font-size: 12px;
+                                   -fx-padding: 8 14; -fx-cursor: hand; -fx-border-color: transparent;" />
+                    </HBox>
+                </VBox>
+
+                <!-- Status Label -->
+                <Label fx:id="statusLabel" text="" wrapText="true"
+                    style="-fx-font-size: 12px; -fx-text-fill: #1a7a4a;
+                           -fx-background-color: #eafaf1; -fx-padding: 10 14;
+                           -fx-background-radius: 8;" />
+
+                <!-- Enroll Button -->
+                <Button text="✔  Enroll Selected Students"
+                    onAction="#handleEnroll" prefWidth="410" prefHeight="44"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                           -fx-font-size: 14px; -fx-font-weight: bold;
+                           -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" />
+
+                <Button text="🗑 Remove Enrollment" onAction="#handleDelete"
+                    prefWidth="410"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                           -fx-background-radius: 8; -fx-font-size: 13px;
+                           -fx-padding: 10 20; -fx-cursor: hand; -fx-border-color: transparent;" />
+
+            </VBox>
+
+            <!-- ══ RIGHT PANEL ══ -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <VBox style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-padding: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 3);"
+                      spacing="10" VBox.vgrow="ALWAYS">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Current Enrollments"
+                            style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="tableSearchField"
+                            promptText="Filter by name / course..." prefWidth="220"
+                            style="-fx-background-color: white; -fx-border-color: #d0d0d0;
+                                   -fx-border-radius: 8; -fx-background-radius: 8;
+                                   -fx-border-width: 1; -fx-padding: 8 12; -fx-font-size: 13px;" />
+                        <Button text="Filter" onAction="#handleTableSearch"
+                            style="-fx-background-color: #2980b9; -fx-text-fill: white;
+                                   -fx-background-radius: 8; -fx-font-size: 13px;
+                                   -fx-padding: 8 16; -fx-cursor: hand; -fx-border-color: transparent;" />
+                    </HBox>
+
+                    <TableView fx:id="enrollmentTable" VBox.vgrow="ALWAYS" prefHeight="580"
+                        style="-fx-background-color: white; -fx-background-radius: 10;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);">
+                        <columns>
+                            <TableColumn fx:id="colEnrollId"     text="ID"           prefWidth="55" />
+                            <TableColumn fx:id="colStudentId"    text="Student ID"   prefWidth="95" />
+                            <TableColumn fx:id="colStudentName"  text="Student Name" prefWidth="155" />
+                            <TableColumn fx:id="colCourseId"     text="Course ID"    prefWidth="90" />
+                            <TableColumn fx:id="colCourseName"   text="Course Name"  prefWidth="165" />
+                            <TableColumn fx:id="colSemester"     text="Semester"     prefWidth="100" />
+                            <TableColumn fx:id="colAcademicYear" text="Year"         prefWidth="90" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </VBox>
+
+        </HBox>
+    </center>
+</BorderPane>

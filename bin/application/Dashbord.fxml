@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #f0f2f5;"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="application.Dashboardcontroller">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="0"
+              style="-fx-background-color: linear-gradient(to right, #1a1a2e, #0f3460);
+                     -fx-padding: 0 20 0 0;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);">
+            <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #e96c50; -fx-padding: 16 24;">
+                <Label text="📊" style="-fx-font-size: 20px;" />
+                <Label text="Dashboard" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="🏠 Back to Home" onAction="#goHome"
+                style="-fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: white;
+                       -fx-background-radius: 6; -fx-font-size: 13px; -fx-padding: 8 16;
+                       -fx-cursor: hand; -fx-border-color: transparent;" />
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane style="-fx-background-color: #f0f2f5;">
+            <VBox spacing="24" alignment="TOP_CENTER" style="-fx-padding: 40 60;">
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="System Overview"
+                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;" />
+                    <Label text="Live statistics from the database"
+                        style="-fx-font-size: 13px; -fx-text-fill: #888;" />
+                </VBox>
+
+                <GridPane hgap="20" vgap="20" alignment="CENTER">
+
+                    <!-- Students -->
+                    <VBox alignment="CENTER" spacing="10" prefWidth="230" prefHeight="155"
+                        GridPane.columnIndex="0" GridPane.rowIndex="0"
+                        style="-fx-background-color: linear-gradient(to bottom right, #1a1a2e, #0f3460);
+                               -fx-background-radius: 16; -fx-padding: 24;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 14, 0, 0, 5);">
+                        <Label text="👨‍🎓" style="-fx-font-size: 34px;" />
+                        <Label fx:id="studentCountLabel" text="—"
+                            style="-fx-font-size: 46px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Total Students"
+                            style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.75); -fx-font-weight: bold;" />
+                    </VBox>
+
+                    <!-- Instructors -->
+                    <VBox alignment="CENTER" spacing="10" prefWidth="230" prefHeight="155"
+                        GridPane.columnIndex="1" GridPane.rowIndex="0"
+                        style="-fx-background-color: linear-gradient(to bottom right, #e96c50, #c0392b);
+                               -fx-background-radius: 16; -fx-padding: 24;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 14, 0, 0, 5);">
+                        <Label text="👨‍🏫" style="-fx-font-size: 34px;" />
+                        <Label fx:id="instructorCountLabel" text="—"
+                            style="-fx-font-size: 46px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Total Instructors"
+                            style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85); -fx-font-weight: bold;" />
+                    </VBox>
+
+                    <!-- Courses -->
+                    <VBox alignment="CENTER" spacing="10" prefWidth="230" prefHeight="155"
+                        GridPane.columnIndex="0" GridPane.rowIndex="1"
+                        style="-fx-background-color: linear-gradient(to bottom right, #27ae60, #1a7a44);
+                               -fx-background-radius: 16; -fx-padding: 24;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 14, 0, 0, 5);">
+                        <Label text="📚" style="-fx-font-size: 34px;" />
+                        <Label fx:id="courseCountLabel" text="—"
+                            style="-fx-font-size: 46px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Total Courses"
+                            style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85); -fx-font-weight: bold;" />
+                    </VBox>
+
+                    <!-- Users -->
+                    <VBox alignment="CENTER" spacing="10" prefWidth="230" prefHeight="155"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1"
+                        style="-fx-background-color: linear-gradient(to bottom right, #f39c12, #d68910);
+                               -fx-background-radius: 16; -fx-padding: 24;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 14, 0, 0, 5);">
+                        <Label text="🔑" style="-fx-font-size: 34px;" />
+                        <Label fx:id="userCountLabel" text="—"
+                            style="-fx-font-size: 46px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Total Users"
+                            style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85); -fx-font-weight: bold;" />
+                    </VBox>
+
+                    <!-- Enrollments — full width -->
+                    <VBox alignment="CENTER" spacing="10" prefHeight="130"
+                        GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"
+                        style="-fx-background-color: linear-gradient(to right, #2980b9, #1a5276);
+                               -fx-background-radius: 16; -fx-padding: 24;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 14, 0, 0, 5);">
+                        <Label text="📝" style="-fx-font-size: 34px;" />
+                        <Label fx:id="enrollmentCountLabel" text="—"
+                            style="-fx-font-size: 52px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                        <Label text="Total Enrollments"
+                            style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85); -fx-font-weight: bold;" />
+                    </VBox>
+
+                </GridPane>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

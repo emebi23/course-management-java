@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: linear-gradient(to bottom right, #eaf4fb, #d6eaf8);"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="application.InstructorHomecontroller">
+
+    <!-- TOP -->
+    <top>
+        <VBox style="-fx-padding: 16; -fx-background-color: #1a5276; -fx-alignment: CENTER;">
+            <Label text="Instructor Portal"
+                style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label fx:id="welcomeLabel"
+                style="-fx-text-fill: #aed6f1; -fx-font-size: 14px;" />
+            <Label fx:id="instructorInfoLabel"
+                style="-fx-text-fill: #d6eaf8; -fx-font-size: 12px;" wrapText="true"/>
+        </VBox>
+    </top>
+
+    <!-- CENTER -->
+    <center>
+        <VBox spacing="16" style="-fx-padding: 20;">
+
+            <!-- My Courses table -->
+            <VBox spacing="6">
+                <Label text="My Assigned Courses"
+                    style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1a5276;" />
+                <TableView fx:id="courseTable" prefHeight="160">
+                    <columns>
+                        <TableColumn fx:id="colCourseId"      text="Course ID"        prefWidth="110" />
+                        <TableColumn fx:id="colCourseName"    text="Course Name"       prefWidth="240" />
+                        <TableColumn fx:id="colCreditHour"    text="Credit Hours"      prefWidth="110" />
+                        <TableColumn fx:id="colEnrolledCount" text="Enrolled Students" prefWidth="150" />
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Enrolled Students — TreeView grouped by Dept → Section → Student -->
+            <VBox spacing="6" VBox.vgrow="ALWAYS">
+                <Label text="My Enrolled Students  (grouped by Department → Section)"
+                    style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1a5276;" />
+                <TreeView fx:id="studentTreeView" VBox.vgrow="ALWAYS" prefHeight="380"
+                    style="-fx-border-color: #1a5276; -fx-border-radius: 6;
+                           -fx-background-color: white;" />
+            </VBox>
+
+        </VBox>
+    </center>
+
+    <!-- BOTTOM -->
+    <bottom>
+        <VBox style="-fx-padding: 12 16; -fx-background-color: rgba(26,82,118,0.08);">
+            <Label fx:id="selectionLabel"
+                text="👆  Click a Department or Section in the tree above, then click Manage Grades"
+                style="-fx-font-size: 12px; -fx-text-fill: #1a5276;
+                       -fx-padding: 0 0 8 0;" />
+            <HBox spacing="20" alignment="CENTER">
+                <Button text="Manage / Set Grades" onAction="#goGrades"
+                    prefWidth="220" prefHeight="42"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                           -fx-font-size: 14px; -fx-background-radius: 8;" />
+                <Button text="Show All My Students" onAction="#goGradesAll"
+                    prefWidth="200" prefHeight="42"
+                    style="-fx-background-color: #2980b9; -fx-text-fill: white;
+                           -fx-font-size: 14px; -fx-background-radius: 8;" />
+                <Button text="Logout" onAction="#goLogout"
+                    prefWidth="120" prefHeight="42"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                           -fx-font-size: 14px; -fx-background-radius: 8;" />
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #f0f2f5;"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="application.ClassSectioncontroller">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="0"
+              style="-fx-background-color: linear-gradient(to right, #1a1a2e, #0f3460);
+                     -fx-padding: 0 20 0 0;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);">
+            <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #e96c50; -fx-padding: 16 24;">
+                <Label text="🗂" style="-fx-font-size: 20px;" />
+                <Label text="Class / Section Management" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="🏠 Back to Home" onAction="#goHome"
+                style="-fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: white;
+                       -fx-background-radius: 6; -fx-font-size: 13px; -fx-padding: 8 16;
+                       -fx-cursor: hand; -fx-border-color: transparent;" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="14" style="-fx-padding: 18;">
+
+            <!-- Form Card -->
+            <VBox spacing="12" style="-fx-background-color:white;-fx-background-radius:12;
+                         -fx-padding:18;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),10,0,0,3);">
+                <Label text="Class / Section Information" style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#1a1a2e;" />
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Class ID" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <TextField fx:id="classIdField" prefWidth="130" promptText="e.g. CLS001"
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 10;-fx-font-size:13px;" />
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Year Level" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <TextField fx:id="yearLevelField" prefWidth="90" promptText="1"
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 10;-fx-font-size:13px;" />
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Section" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <TextField fx:id="sectionField" prefWidth="90" promptText="A"
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 10;-fx-font-size:13px;" />
+                    </VBox>
+                    <VBox spacing="4">
+                        <Label text="Academic Year" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <TextField fx:id="acadYearField" prefWidth="130" promptText="2025/2026"
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-padding:8 10;-fx-font-size:13px;" />
+                    </VBox>
+                </HBox>
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Department" style="-fx-font-size:11px;-fx-text-fill:#666;" />
+                        <ComboBox fx:id="deptCombo" prefWidth="360" promptText="Select department..."
+                            style="-fx-background-color:white;-fx-border-color:#d0d0d0;-fx-border-radius:8;-fx-background-radius:8;-fx-border-width:1;-fx-font-size:13px;" />
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Toolbar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="➕ Add Class"     onAction="#handleAdd"     style="-fx-background-color:#27ae60;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+                <Button text="✏ Update"         onAction="#handleUpdate"  style="-fx-background-color:#f39c12;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+                <Button text="🗑 Delete"         onAction="#handleDelete"  style="-fx-background-color:#e74c3c;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+                <Button text="⬆ Promote Class"  onAction="#handlePromote" style="-fx-background-color:#2980b9;-fx-text-fill:white;-fx-background-radius:8;-fx-font-size:13px;-fx-padding:10 18;-fx-cursor:hand;-fx-border-color:transparent;" />
+            </HBox>
+
+            <!-- Table -->
+            <TableView fx:id="classTable" prefHeight="430"
+                style="-fx-background-color:white;-fx-background-radius:10;-fx-effect:dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);">
+                <columns>
+                    <TableColumn fx:id="colClassId"      text="Class ID"    prefWidth="110" />
+                    <TableColumn fx:id="colYearLevel"    text="Year"        prefWidth="70" />
+                    <TableColumn fx:id="colSection"      text="Section"     prefWidth="80" />
+                    <TableColumn fx:id="colDeptName"     text="Department"  prefWidth="250" />
+                    <TableColumn fx:id="colAcademicYear" text="Acad. Year"  prefWidth="120" />
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

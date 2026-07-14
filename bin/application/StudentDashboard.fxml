@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane style="-fx-background-color: linear-gradient(to right, #fbc2eb, #a6c1ee);"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="application.StudentDashboardcontroller">
+
+    <!-- TOP: Welcome banner -->
+    <top>
+        <VBox style="-fx-padding: 18; -fx-background-color: #8e44ad; -fx-alignment: CENTER;">
+            <Label fx:id="welcomeLabel" text="Welcome!"
+                style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;" />
+        </VBox>
+    </top>
+
+    <!-- LEFT: Student profile panel -->
+    <left>
+        <VBox spacing="8" style="-fx-padding: 20; -fx-background-color: rgba(255,255,255,0.75); -fx-min-width: 190;">
+            <Label text="My Profile" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Separator />
+            <Label text="Student ID:" style="-fx-font-weight: bold;" />
+            <Label fx:id="studentIdLabel" style="-fx-text-fill: #333;" />
+            <Label text="Name:" style="-fx-font-weight: bold;" />
+            <Label fx:id="nameLabel" style="-fx-text-fill: #333;" />
+            <Label text="Email:" style="-fx-font-weight: bold;" />
+            <Label fx:id="emailLabel" style="-fx-text-fill: #333;" wrapText="true"/>
+            <Label text="Department:" style="-fx-font-weight: bold;" />
+            <Label fx:id="departmentLabel" style="-fx-text-fill: #333;" />
+            <Separator />
+            <Button text="Logout" onAction="#handleLogout"
+                style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                       -fx-pref-width: 150; -fx-font-size: 13px; -fx-background-radius: 6;" />
+        </VBox>
+    </left>
+
+    <!-- CENTER: Grades table -->
+    <center>
+        <VBox spacing="12" style="-fx-padding: 20;">
+            <Label text="My Grades" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+            <TableView fx:id="gradeTable" prefHeight="420" prefWidth="640">
+                <columns>
+                    <TableColumn fx:id="colSemester"   text="Semester"    prefWidth="100" />
+                    <TableColumn fx:id="colCourseId"   text="Course ID"   prefWidth="80" />
+                    <TableColumn fx:id="colCourseName" text="Course Name" prefWidth="145" />
+                    <TableColumn fx:id="colCredit"     text="Cr. Hr"      prefWidth="55" />
+                    <TableColumn fx:id="colGrade"      text="Grade"       prefWidth="60" />
+                    <TableColumn fx:id="colGradePoint" text="Grd. Pt"     prefWidth="60" />
+                    <TableColumn fx:id="colCgpa"       text="CGPA"        prefWidth="75"
+                        style="-fx-alignment: CENTER; -fx-font-weight: bold;" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- RIGHT: GPA Summary panel -->
+    <right>
+        <VBox spacing="12" style="-fx-padding: 20; -fx-background-color: rgba(255,255,255,0.85);
+                                  -fx-min-width: 210; -fx-border-color: #ccc;
+                                  -fx-border-width: 0 0 0 1;">
+
+            <Label text="GPA Summary" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #8e44ad;" />
+            <Separator />
+
+            <!-- Semester GPA block -->
+            <Label text="Semester GPA:" style="-fx-font-weight: bold; -fx-text-fill: #444;" />
+            <Label fx:id="gpaLabel" wrapText="true"
+                style="-fx-text-fill: #1a7a4a; -fx-font-size: 12px;
+                       -fx-background-color: #eafaf1; -fx-padding: 8;
+                       -fx-background-radius: 6;" />
+
+            <Separator />
+
+            <!-- Total credits -->
+            <HBox spacing="6" alignment="CENTER_LEFT">
+                <Label text="Total Credits:" style="-fx-font-weight: bold;" />
+                <Label fx:id="totalCreditsLabel" text="0"
+                    style="-fx-text-fill: #555; -fx-font-size: 13px;" />
+            </HBox>
+
+            <!-- CGPA big display -->
+            <VBox alignment="CENTER"
+                style="-fx-background-color: #8e44ad; -fx-background-radius: 10;
+                       -fx-padding: 16; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.2),8,0,0,3);">
+                <Label text="CGPA"
+                    style="-fx-font-size: 13px; -fx-text-fill: #f0e6ff; -fx-font-weight: bold;" />
+                <Label fx:id="cgpaLabel" text="—"
+                    style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                <Label text="out of 4.00"
+                    style="-fx-font-size: 11px; -fx-text-fill: #ddd;" />
+            </VBox>
+
+            <!-- Grade scale reference -->
+            <Separator />
+            <Label text="Grade Scale" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+            <GridPane hgap="8" vgap="3">
+                <Label text="A+"  GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight:bold; -fx-text-fill:#8e44ad;"/>
+                <Label text="= 4.0" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-text-fill:#8e44ad;"/>
+                <Label text="A"   GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight:bold;"/>
+                <Label text="= 4.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="A-"  GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight:bold;"/>
+                <Label text="= 3.7" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="B+"  GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight:bold;"/>
+                <Label text="= 3.5" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label text="B"   GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight:bold;"/>
+                <Label text="= 3.0" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label text="B-"  GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-font-weight:bold;"/>
+                <Label text="= 2.7" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                <Label text="C+"  GridPane.columnIndex="0" GridPane.rowIndex="6" style="-fx-font-weight:bold;"/>
+                <Label text="= 2.5" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                <Label text="C"   GridPane.columnIndex="0" GridPane.rowIndex="7" style="-fx-font-weight:bold;"/>
+                <Label text="= 2.0" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                <Label text="D"   GridPane.columnIndex="0" GridPane.rowIndex="8" style="-fx-font-weight:bold;"/>
+                <Label text="= 1.0" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                <Label text="F"   GridPane.columnIndex="0" GridPane.rowIndex="9" style="-fx-font-weight:bold; -fx-text-fill:#e74c3c;"/>
+                <Label text="= 0.0" GridPane.columnIndex="1" GridPane.rowIndex="9" style="-fx-text-fill:#e74c3c;"/>
+            </GridPane>
+        </VBox>
+    </right>
+
+</BorderPane>

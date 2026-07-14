@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="application.Homecontroller"
+            style="-fx-background-color: #f0f2f5;">
+
+    <!-- ── TOP NAV BAR ── -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="0"
+              style="-fx-background-color: linear-gradient(to right, #1a1a2e, #0f3460);
+                     -fx-padding: 0 20 0 0;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);">
+
+            <!-- Logo -->
+            <HBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #e96c50; -fx-padding: 16 24;">
+                <Label text="🎓" style="-fx-font-size: 20px;" />
+                <VBox spacing="1">
+                    <Label text="CMS"
+                        style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                    <Label text="Admin Panel"
+                        style="-fx-font-size: 10px; -fx-text-fill: rgba(255,255,255,0.80);" />
+                </VBox>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Nav buttons -->
+            <HBox spacing="2" alignment="CENTER">
+                <Button text="📊 Dashboard"     onAction="#goDashboard"      style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="👤 Students"      onAction="#goStudentAction"  style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="👨‍🏫 Instructors"  onAction="#goInstructorAction" style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="📚 Courses"       onAction="#goCourseAction"   style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="📝 Enrollment"    onAction="#goEnrollmentAction" style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="🏛 Department"    onAction="#goDepartmentAction" style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="🗂 Class/Section" onAction="#goClassSectionAction" style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="📋 Offering"      onAction="#goCourseOfferingAction" style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="🔑 Users"         onAction="#goUserAction"     style="-fx-background-color:transparent;-fx-text-fill:rgba(255,255,255,0.85);-fx-font-size:12px;-fx-padding:8 12;-fx-cursor:hand;-fx-background-radius:6;" />
+                <Button text="🚪 Logout"        onAction="#goLogout"
+                    style="-fx-background-color:#e96c50;-fx-text-fill:white;
+                           -fx-font-size:12px;-fx-padding:8 16;
+                           -fx-cursor:hand;-fx-background-radius:6;-fx-font-weight:bold;" />
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- ── CENTER ── -->
+    <center>
+        <StackPane style="-fx-background-color: #f0f2f5;">
+            <VBox alignment="CENTER" spacing="36" style="-fx-padding: 50 40;">
+
+                <!-- Heading -->
+                <VBox alignment="CENTER" spacing="6">
+                    <Label text="Welcome to the Course Management System"
+                        style="-fx-font-size: 26px; -fx-font-weight: bold;
+                               -fx-text-fill: #1a1a2e;" wrapText="true" />
+                    <Label text="Click any card or use the navigation bar above"
+                        style="-fx-font-size: 13px; -fx-text-fill: #7f8c8d;" />
+                </VBox>
+
+                <!-- Card grid — each card is a Button for reliable click handling -->
+                <GridPane hgap="20" vgap="20" alignment="CENTER">
+
+                    <!-- Students -->
+                    <Button GridPane.columnIndex="0" GridPane.rowIndex="0"
+                        onAction="#goStudentAction" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:white;-fx-background-radius:14;
+                               -fx-border-color:#e8e8e8;-fx-border-radius:14;-fx-border-width:1;
+                               -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),10,0,0,3);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="👤" style="-fx-font-size:38px;" />
+                                <Label text="Students"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#2c3e50;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- Instructors -->
+                    <Button GridPane.columnIndex="1" GridPane.rowIndex="0"
+                        onAction="#goInstructorAction" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:white;-fx-background-radius:14;
+                               -fx-border-color:#e8e8e8;-fx-border-radius:14;-fx-border-width:1;
+                               -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),10,0,0,3);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="👨‍🏫" style="-fx-font-size:38px;" />
+                                <Label text="Instructors"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#2c3e50;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- Courses -->
+                    <Button GridPane.columnIndex="2" GridPane.rowIndex="0"
+                        onAction="#goCourseAction" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:white;-fx-background-radius:14;
+                               -fx-border-color:#e8e8e8;-fx-border-radius:14;-fx-border-width:1;
+                               -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),10,0,0,3);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="📚" style="-fx-font-size:38px;" />
+                                <Label text="Courses"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#2c3e50;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- Enrollment -->
+                    <Button GridPane.columnIndex="3" GridPane.rowIndex="0"
+                        onAction="#goEnrollmentAction" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:white;-fx-background-radius:14;
+                               -fx-border-color:#e8e8e8;-fx-border-radius:14;-fx-border-width:1;
+                               -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),10,0,0,3);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="📝" style="-fx-font-size:38px;" />
+                                <Label text="Enrollment"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#2c3e50;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- Department -->
+                    <Button GridPane.columnIndex="0" GridPane.rowIndex="1"
+                        onAction="#goDepartmentAction" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:white;-fx-background-radius:14;
+                               -fx-border-color:#e8e8e8;-fx-border-radius:14;-fx-border-width:1;
+                               -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),10,0,0,3);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="🏛" style="-fx-font-size:38px;" />
+                                <Label text="Department"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#2c3e50;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- Class / Section -->
+                    <Button GridPane.columnIndex="1" GridPane.rowIndex="1"
+                        onAction="#goClassSectionAction" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:white;-fx-background-radius:14;
+                               -fx-border-color:#e8e8e8;-fx-border-radius:14;-fx-border-width:1;
+                               -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),10,0,0,3);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="🗂" style="-fx-font-size:38px;" />
+                                <Label text="Class / Section"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#2c3e50;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- Course Offering -->
+                    <Button GridPane.columnIndex="2" GridPane.rowIndex="1"
+                        onAction="#goCourseOfferingAction" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:white;-fx-background-radius:14;
+                               -fx-border-color:#e8e8e8;-fx-border-radius:14;-fx-border-width:1;
+                               -fx-effect:dropshadow(gaussian,rgba(0,0,0,0.07),10,0,0,3);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="📋" style="-fx-font-size:38px;" />
+                                <Label text="Course Offering"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:#2c3e50;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                    <!-- Dashboard (highlighted) -->
+                    <Button GridPane.columnIndex="3" GridPane.rowIndex="1"
+                        onAction="#goDashboard" prefWidth="165" prefHeight="130"
+                        style="-fx-background-color:linear-gradient(to bottom right,#e96c50,#c0392b);
+                               -fx-background-radius:14;
+                               -fx-effect:dropshadow(gaussian,rgba(233,108,80,0.45),12,0,0,4);
+                               -fx-cursor:hand;">
+                        <graphic>
+                            <VBox alignment="CENTER" spacing="10">
+                                <Label text="📊" style="-fx-font-size:38px;" />
+                                <Label text="Dashboard"
+                                    style="-fx-font-size:14px;-fx-font-weight:bold;-fx-text-fill:white;" />
+                            </VBox>
+                        </graphic>
+                    </Button>
+
+                </GridPane>
+            </VBox>
+        </StackPane>
+    </center>
+
+</BorderPane>

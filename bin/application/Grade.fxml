@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: linear-gradient(to right, #f8ffae, #43c6ac);"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="application.Gradecontroller">
+
+    <top>
+        <VBox style="-fx-padding: 15; -fx-background-color: #1abc9c;">
+            <Label text="Grade Management"
+                style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label fx:id="instructorLabel"
+                style="-fx-text-fill: white; -fx-font-size: 13px;" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="12" style="-fx-padding: 20;">
+
+            <Label text="Click a row → type grade → Save Grade."
+                style="-fx-font-size: 13px; -fx-text-fill: #333;" />
+
+            <!-- Status bar -->
+            <Label fx:id="statusLabel" text=""
+                style="-fx-font-size: 12px; -fx-text-fill: #1a7a4a;
+                       -fx-background-color: #eafaf1; -fx-padding: 6;
+                       -fx-background-radius: 5;" />
+
+            <!-- Grade table -->
+            <TableView fx:id="gradeTable" prefHeight="360">
+                <columns>
+                    <TableColumn fx:id="colStudentId"   text="Student ID"   prefWidth="100" />
+                    <TableColumn fx:id="colStudentName" text="Student Name" prefWidth="160" />
+                    <TableColumn fx:id="colCourseId"    text="Course ID"    prefWidth="100" />
+                    <TableColumn fx:id="colCourseName"  text="Course Name"  prefWidth="180" />
+                    <TableColumn fx:id="colGrade"       text="Grade"        prefWidth="80" />
+                    <TableColumn fx:id="colGradePoint"  text="Grade Pt"     prefWidth="80" />
+                </columns>
+            </TableView>
+
+            <!-- Input row -->
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="Grade:" style="-fx-font-weight: bold; -fx-font-size: 13px;" />
+                <TextField fx:id="gradeField" prefWidth="110"
+                    promptText="A, A-, B+, B ..." style="-fx-font-size: 13px;" />
+                <Button text="Save Grade" onAction="#handleSaveGrade"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                           -fx-pref-width: 110; -fx-font-size: 13px; -fx-background-radius: 6;" />
+                <Button text="Back" onAction="#goBack"
+                    style="-fx-background-color: #7f8c8d; -fx-text-fill: white;
+                           -fx-background-radius: 6; -fx-font-size: 13px;" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

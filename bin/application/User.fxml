@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #fbc2eb, #a6c1ee);"
+    xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+    fx:controller="application.Usercontroller">
+
+    <top>
+        <VBox style="-fx-padding: 15; -fx-background-color: #8e44ad;">
+            <Label text="User Management" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label text="Admin: Create and manage login accounts" style="-fx-text-fill: #eecef5; -fx-font-size: 12px;" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="12" style="-fx-padding: 20; -fx-background-color: rgba(255,255,255,0.85); -fx-background-radius: 10;">
+            <padding><Insets top="20" right="20" bottom="10" left="20" /></padding>
+
+            <HBox spacing="10">
+                <Label text="Username:" prefWidth="80" />
+                <TextField fx:id="tfUsername" prefWidth="200" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Password:" prefWidth="80" />
+                <PasswordField fx:id="tfPassword" prefWidth="200" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Role:" prefWidth="80" />
+                <ComboBox fx:id="cbRole" prefWidth="150" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Button text="Add"    onAction="#addUser"    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-pref-width: 80;" />
+                <Button text="Update" onAction="#updateUser" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-pref-width: 80;" />
+                <Button text="Delete" onAction="#deleteUser" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-pref-width: 80;" />
+                <Button text="Back to Home" onAction="#goHome" style="-fx-background-color: #7f8c8d; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <TableView fx:id="userTable" prefHeight="350">
+            <columns>
+                <TableColumn fx:id="colId"       text="ID"       prefWidth="60" />
+                <TableColumn fx:id="colUsername" text="Username" prefWidth="160" />
+                <TableColumn fx:id="colPassword" text="Password" prefWidth="160" />
+                <TableColumn fx:id="colRole"     text="Role"     prefWidth="130" />
+            </columns>
+        </TableView>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- StackPane fills the window and keeps card centred at any size -->
+<StackPane xmlns="http://javafx.com/javafx/23.0.1"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="application.Logincontroller"
+           style="-fx-background-color: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);">
+
+    <VBox alignment="CENTER" spacing="0" maxWidth="420"
+          style="-fx-background-color: rgba(255,255,255,0.05);
+                 -fx-background-radius: 20;
+                 -fx-border-color: rgba(255,255,255,0.12);
+                 -fx-border-radius: 20;
+                 -fx-border-width: 1;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 30, 0, 0, 10);">
+
+        <!-- ── TOP BANNER ── -->
+        <VBox alignment="CENTER" spacing="6"
+              style="-fx-background-color: linear-gradient(to right, #e96c50, #c0392b);
+                     -fx-background-radius: 20 20 0 0;
+                     -fx-padding: 32 40 28 40;">
+            <Label text="🎓"
+                style="-fx-font-size: 40px;" />
+            <Label text="Course Management System"
+                style="-fx-font-size: 20px; -fx-font-weight: bold;
+                       -fx-text-fill: white; -fx-wrap-text: true;
+                       -fx-text-alignment: center;" />
+            <Label text="Sign in to your account"
+                style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.80);" />
+        </VBox>
+
+        <!-- ── FORM ── -->
+        <VBox spacing="18"
+              style="-fx-padding: 36 40 36 40;">
+
+            <!-- Username -->
+            <VBox spacing="6">
+                <Label text="Username"
+                    style="-fx-font-size: 12px; -fx-font-weight: bold;
+                           -fx-text-fill: rgba(255,255,255,0.75);
+                           -fx-letter-spacing: 1px;" />
+                <TextField fx:id="usernameField"
+                    promptText="Enter your username"
+                    style="-fx-background-color: rgba(255,255,255,0.10);
+                           -fx-background-radius: 8;
+                           -fx-border-color: rgba(255,255,255,0.20);
+                           -fx-border-radius: 8; -fx-border-width: 1;
+                           -fx-text-fill: white; -fx-prompt-text-fill: rgba(255,255,255,0.40);
+                           -fx-font-size: 14px; -fx-padding: 12 16;" />
+            </VBox>
+
+            <!-- Password -->
+            <VBox spacing="6">
+                <Label text="Password"
+                    style="-fx-font-size: 12px; -fx-font-weight: bold;
+                           -fx-text-fill: rgba(255,255,255,0.75);
+                           -fx-letter-spacing: 1px;" />
+                <PasswordField fx:id="passwordField"
+                    promptText="Enter your password"
+                    style="-fx-background-color: rgba(255,255,255,0.10);
+                           -fx-background-radius: 8;
+                           -fx-border-color: rgba(255,255,255,0.20);
+                           -fx-border-radius: 8; -fx-border-width: 1;
+                           -fx-text-fill: white; -fx-prompt-text-fill: rgba(255,255,255,0.40);
+                           -fx-font-size: 14px; -fx-padding: 12 16;" />
+            </VBox>
+
+            <!-- Login button -->
+            <Button text="Sign In" onAction="#handleLogin"
+                maxWidth="Infinity" prefHeight="46"
+                style="-fx-background-color: linear-gradient(to right, #e96c50, #c0392b);
+                       -fx-background-radius: 8;
+                       -fx-text-fill: white; -fx-font-size: 15px;
+                       -fx-font-weight: bold;
+                       -fx-cursor: hand;
+                       -fx-effect: dropshadow(gaussian, rgba(233,108,80,0.5), 12, 0, 0, 4);" />
+
+            <!-- Reset link-style button -->
+            <Button text="Clear Fields" onAction="#handleReset"
+                maxWidth="Infinity" prefHeight="38"
+                style="-fx-background-color: transparent;
+                       -fx-border-color: rgba(255,255,255,0.25);
+                       -fx-border-radius: 8; -fx-border-width: 1;
+                       -fx-text-fill: rgba(255,255,255,0.65);
+                       -fx-font-size: 13px; -fx-cursor: hand;" />
+
+        </VBox>
+
+        <!-- ── FOOTER ── -->
+        <Label text="© 2025 CMS  —  All rights reserved"
+            style="-fx-font-size: 11px; -fx-text-fill: rgba(255,255,255,0.30);
+                   -fx-padding: 0 0 20 0;" />
+
+    </VBox>
+</StackPane>
